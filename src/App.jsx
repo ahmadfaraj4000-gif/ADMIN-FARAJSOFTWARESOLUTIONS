@@ -5,7 +5,6 @@ const ADMIN_EMAIL = import.meta.env.VITE_ADMIN_EMAIL || "farajsoftwaresolutions@
 
 const PRODUCTS = [
   { value: "shift_planner", label: "Shift Planner" },
-  { value: "pricing_assistant_standard", label: "Pricing Assistant Standard" },
   { value: "pricing_assistant_pro", label: "Pricing Assistant Pro" },
 ];
 
