@@ -49,6 +49,7 @@ Open Supabase → SQL Editor and run these in order:
 1. `sql/01_schema.sql`
 2. `sql/02_functions_and_triggers.sql`
 3. `sql/03_rls_policies.sql`
+4. `sql/05_pricing_assistant_tables.sql`
 
 Only run `sql/04_optional_test_data.sql` if you want test data and you replace `customer@example.com` with a real user email.
 
@@ -100,8 +101,26 @@ on conflict (id) do nothing;
 The subscriptions table supports:
 
 - `shift_planner`
-- `pricing_assistant_standard`
 - `pricing_assistant_pro`
+
+### Pricing Assistant web app tables
+
+The converted web app stores saved menus and reusable cost structures in:
+
+- `pricing_assistant_menus`
+- `pricing_assistant_cost_configs`
+
+Run `sql/05_pricing_assistant_tables.sql` so users can save menu items, recall restaurant cost setups, and export menus later.
+
+### Stripe links
+
+The client portal reads these optional env vars:
+
+```env
+VITE_STRIPE_PRICING_ASSISTANT_PRO_LINK=https://buy.stripe.com/...
+```
+
+Stripe webhooks should insert or update `subscriptions.product` as `pricing_assistant_pro`. Admin-granted trials and bypasses should use that same product value so the protected portal route honors them.
 
 ### Fix for ON CONFLICT error
 
