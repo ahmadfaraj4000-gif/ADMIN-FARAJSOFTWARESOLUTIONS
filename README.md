@@ -50,6 +50,7 @@ Open Supabase → SQL Editor and run these in order:
 2. `sql/02_functions_and_triggers.sql`
 3. `sql/03_rls_policies.sql`
 4. `sql/05_pricing_assistant_tables.sql`
+5. `sql/06_trial_access.sql`
 
 Only run `sql/04_optional_test_data.sql` if you want test data and you replace `customer@example.com` with a real user email.
 
@@ -111,6 +112,10 @@ The converted web app stores saved menus and reusable cost structures in:
 - `pricing_assistant_cost_configs`
 
 Run `sql/05_pricing_assistant_tables.sql` so users can save menu items, recall restaurant cost setups, and export menus later.
+
+### Pricing Assistant trial access
+
+Run `sql/06_trial_access.sql` to enable the client portal's 7-day Pricing Assistant Pro trial. The trial is enforced by Supabase using the signed-in user's normalized email and `pricing_assistant_pro`, so the same email cannot start repeated trials.
 
 ### Stripe links
 
